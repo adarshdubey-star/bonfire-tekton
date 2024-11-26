@@ -282,6 +282,22 @@ spec:
           value: "$(params.IQE_IBUTSU_SOURCE)"
         - name: IQE_IMAGE_TAG
           value: "$(params.IQE_IMAGE_TAG)"
+        - name: DYNACONF_ephemeral_images__aws__image_uuid
+          value: $(tasks.preparation-provisioning.results.DYNACONF_ephemeral_images__aws__image_uuid)
+        - name: DYNACONF_ephemeral_images__aws__image_name
+          value: $(tasks.preparation-provisioning.results.DYNACONF_ephemeral_images__aws__image_name)
+        - name: DYNACONF_ephemeral_images__gcp__image_uuid
+          value: $(tasks.preparation-provisioning.results.DYNACONF_ephemeral_images__gcp__image_uuid)
+        - name: DYNACONF_ephemeral_images__gcp__image_name
+          value: $(tasks.preparation-provisioning.results.DYNACONF_ephemeral_images__gcp__image_name)
+        - name: DYNACONF_ephemeral_images__azure__image_uuid
+          value: $(tasks.preparation-provisioning.results.DYNACONF_ephemeral_images__azure__image_uuid)
+        - name: DYNACONF_ephemeral_images__azure__image_name
+          value: $(tasks.preparation-provisioning.results.DYNACONF_ephemeral_images__azure__image_name)
+        - name: DYNACONF_ephemeral_images__aws_aarch__image_uuid
+          value: $(tasks.preparation-provisioning.results.DYNACONF_ephemeral_images__aws_aarch__image_uuid)
+        - name: DYNACONF_ephemeral_images__aws_aarch__image_name
+          value: $(tasks.preparation-provisioning.results.DYNACONF_ephemeral_images__aws_aarch__image_name)
       runAfter:
         - deploy-application
         - custom-preparation

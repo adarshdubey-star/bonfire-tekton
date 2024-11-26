@@ -38,6 +38,23 @@ spec:
      type: string
      description: Secret containing the AZURE Resource Group
      default: provisioning-azure-secrets
+  results:
+    - name: DYNACONF_ephemeral_images__aws__image_uuid
+      description: ""
+    - name: DYNACONF_ephemeral_images__aws__image_name
+      description: ""
+    - name: DYNACONF_ephemeral_images__aws_aarch__image_uuid
+      description: ""
+    - name: DYNACONF_ephemeral_images__aws_aarch__image_name
+      description: ""
+    - name: DYNACONF_ephemeral_images__gcp__image_uuid
+      description: ""
+    - name: DYNACONF_ephemeral_images__gcp__image_name
+      description: ""
+    - name: DYNACONF_ephemeral_images__azure__image_uuid
+      description: ""
+    - name: DYNACONF_ephemeral_images__azure__image_name
+      description: ""
   steps:
     - name: provisioning-setup
       image: "$(params.CUSTOM_IMAGE)"
@@ -96,3 +113,19 @@ spec:
         export AZURE_RESOURCE_GROUP
 
         source /images_db_stub.sh 
+
+        echo "Storing AWS image details"
+        echo -n "$DYNACONF_ephemeral_images__aws__image_uuid" > $(results.DYNACONF_ephemeral_images__aws__image_uuid.path)
+        echo -n "$DYNACONF_ephemeral_images__aws__image_name" > $(results.DYNACONF_ephemeral_images__aws__image_name.path)
+
+        echo "Storing AWS aarch image details"
+        echo -n "$DYNACONF_ephemeral_images__aws_aarch__image_uuid" > $(results.DYNACONF_ephemeral_images__aws_aarch__image_uuid.path)
+        echo -n "$DYNACONF_ephemeral_images__aws_aarch__image_name" > $(results.DYNACONF_ephemeral_images__aws_aarch__image_name.path)
+
+        echo "Storing GCP image details"
+        echo -n "$DYNACONF_ephemeral_images__gcp__image_uuid" > $(results.DYNACONF_ephemeral_images__gcp__image_uuid.path)
+        echo -n "$DYNACONF_ephemeral_images__gcp__image_name" > $(results.DYNACONF_ephemeral_images__gcp__image_name.path)
+
+        echo "Storing Azure image details"
+        echo -n "$DYNACONF_ephemeral_images__azure__image_uuid" > $(results.DYNACONF_ephemeral_images__azure__image_uuid.path)
+        echo -n "$DYNACONF_ephemeral_images__azure__image_name" > $(results.DYNACONF_ephemeral_images__azure__image_name.path)
