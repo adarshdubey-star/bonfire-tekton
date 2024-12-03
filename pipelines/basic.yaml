@@ -269,6 +269,8 @@ spec:
         - name: IQE_ENV
           value: "$(params.IQE_ENV)"
         - name: IQE_ENV_VARS
+          value: "$(params.IQE_ENV_VARS)"
+        - name: IQE_ADDITIONAL_ENV_VARS
           value: "$(tasks.custom-preparation.results.iqe-additional-env-vars)"
         - name: IQE_SELENIUM
           value: "$(params.IQE_SELENIUM)"
